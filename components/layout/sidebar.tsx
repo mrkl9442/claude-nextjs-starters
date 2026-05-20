@@ -54,6 +54,7 @@ export function Sidebar() {
 
   return (
     <aside
+      aria-label="사이드바 내비게이션"
       className={cn(
         "relative flex flex-col border-r bg-muted/30 transition-all duration-300",
         collapsed ? "w-16" : "w-60"
@@ -132,11 +133,13 @@ export function Sidebar() {
         size="icon"
         onClick={() => setCollapsed(!collapsed)}
         className="absolute -right-3 top-20 h-6 w-6 rounded-full border bg-background shadow-sm"
+        aria-label={collapsed ? "사이드바 펼치기" : "사이드바 접기"}
+        aria-expanded={!collapsed}
       >
         {collapsed ? (
-          <ChevronRight className="h-3 w-3" />
+          <ChevronRight className="h-3 w-3" aria-hidden="true" />
         ) : (
-          <ChevronLeft className="h-3 w-3" />
+          <ChevronLeft className="h-3 w-3" aria-hidden="true" />
         )}
       </Button>
     </aside>
