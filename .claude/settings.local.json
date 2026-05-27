@@ -21,7 +21,11 @@
       "Bash(node -e \"const z = require\\('zod'\\); console.log\\(z.ZodIssueCode ? 'v3' : 'v4'\\); console.log\\(require\\('./node_modules/zod/package.json'\\).version\\)\")"
     ]
   },
-
+  "enabledMcpjsonServers": [
+    "context7",
+    "sequential-thinking",
+    "shadcn"
+  ],
   "hooks": {
     "PreToolUse": [
       {
