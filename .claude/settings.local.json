@@ -20,5 +20,39 @@
       "Bash(node -e \"const reg = require\\('shadcn/registry'\\); console.log\\(Object.keys\\(reg\\).slice\\(0,30\\)\\)\")",
       "Bash(node -e \"const z = require\\('zod'\\); console.log\\(z.ZodIssueCode ? 'v3' : 'v4'\\); console.log\\(require\\('./node_modules/zod/package.json'\\).version\\)\")"
     ]
+  },
+
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo \"테스트 훅!\" >> ./hook-test.txt"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -NonInteractive -ExecutionPolicy Bypass -File .claude/hooks/slack-notify.ps1 Notification"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -NonInteractive -ExecutionPolicy Bypass -File .claude/hooks/slack-notify.ps1 Stop"
+          }
+        ]
+      }
+    ]
   }
 }
